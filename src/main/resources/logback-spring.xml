@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- FILE and CONSOLE loggers are set here-->
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- silent deprecated hibernate packages-->
+    <logger name="org.hibernate.orm.deprecation" level="ERROR"/>
+
+    <!-- read file values from application.properties -->
+    <springProperty scope="context" name="TRACE_FILE_LOCATION" source="trace.files.path"/>
+
+    <!--Client errors-->
+
+    <appender name="WEB_APP_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${CLIENT_ERROR_FILE_LOCATION:-log}/client-error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>client-error.%i.log</fileNamePattern>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>50MB</MaxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>%relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="web-app-logger" level="INFO" additivity="false">
+        <appender-ref ref="WEB_APP_FILE"/>
+    </logger>
+
+    <!-- Tracing -->
+
+    <appender name="TRACE-AUDIT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${TRACE_FILE_LOCATION:-trace}/trace.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>trace.%i.log</fileNamePattern>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>50MB</MaxFileSize>
+        </triggeringPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="trace-log" level="INFO" additivity="false">
+        <appender-ref ref="TRACE-AUDIT" />
+    </logger>
+
+</configuration>
