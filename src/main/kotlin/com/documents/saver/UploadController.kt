@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile
  */
 
 @RestController
-@RequestMapping("api/files")
+@RequestMapping("api/file")
 class UploadController(private val fileSaver: FileSaver) {
 
     @PostMapping("upload")
