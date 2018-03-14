@@ -40,6 +40,7 @@ API documents via swagger UI can be accessed via **/swagger-ui.html**
 # Setup
 
 - Download (really?)
+- Configure maven or use the bundled version inside a project
 - Modify `application.properties` file
 - Build project via Maven (`mvn install`)
 - Run created jar via (for instance) `java -jar file-uploader-0.0.1-SNAPSHOT.jar`. 
