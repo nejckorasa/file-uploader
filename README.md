@@ -2,7 +2,7 @@
 
 # What is it
 
-##### Spring boot service (built in Kotlin) used to upload files using HTTP multipart requests
+##### Spring boot service (built in Kotlin and on Spring Boot 2.0) used to upload files using HTTP multipart requests
 
 ## Backup storage
 
@@ -40,6 +40,7 @@ API documents via swagger UI can be accessed via **/swagger-ui.html**
 # Setup
 
 - Download (really?)
+- Configure maven or use the bundled version inside a project
 - Modify `application.properties` file
 - Build project via Maven (`mvn install`)
 - Run created jar via (for instance) `java -jar file-uploader-0.0.1-SNAPSHOT.jar`. 
@@ -53,3 +54,8 @@ service provides some additional configuration options:
 - **trace.files.path** - Customize tracing log path to store tracing info ( default: trace )
 - **files.path** - Customize files storage base path 
 - **files.max-days-age** - Customize max age for files (last modified time is used)
+
+# Tech used
+
+- [Spring Boot 2.0](https://projects.spring.io/spring-boot/)
+- [Kotlin](https://kotlinlang.org/)
