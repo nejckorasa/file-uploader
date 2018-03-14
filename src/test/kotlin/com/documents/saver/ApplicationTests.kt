@@ -1,4 +1,4 @@
-package com.marand.thinkmed.marsaver
+package com.documents.saver
 
 import org.junit.Test
 import org.junit.runner.RunWith
