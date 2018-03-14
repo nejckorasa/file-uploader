@@ -2,7 +2,7 @@
 
 # What is it
 
-##### Spring boot service (built in Kotlin) used to upload files using HTTP multipart requests
+##### Spring boot service (built in Kotlin and on Spring Boot 2.0) used to upload files using HTTP multipart requests
 
 ## Backup storage
 
