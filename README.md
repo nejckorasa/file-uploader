@@ -6,7 +6,7 @@
 
 ## Backup storage
 
-Service can act as a (backup) storage for any kind of data. Files are saved to local disk sotrage - base path is configurable.
+Service can act as a (backup) storage for any kind of data. Files are saved to local disk storage - base path is configurable.
 (See property `files.path`)
 
 ## Configurable file age
@@ -22,6 +22,10 @@ Example of trace info - saving file My-file.pdf to directory mydir:
 ``
   2018-03-13_20:42:25.721 - {"file":"My-file.pdf","directory":"mydir"}
 ``
+
+- Tracing can be enabled/disabled by adding `trace-enable` as active profile. (See property `spring.profiles.active`)
+- Trace files are automatically rolled when file size exceeds 50MB.  (See file `logback-spring.xml`)
+
 ## Rest API
 
 Files can be uploaded using HTTP multipart requests. More specifically using API endpoint:
@@ -36,6 +40,8 @@ Parameters:
 ## Swagger API documentation
 
 API documents via swagger UI can be accessed via **/swagger-ui.html**
+
+For instance: [http://localhost:8888/swagger-ui.html](http://localhost:8888/swagger-ui.html) if you run the service locally on port 8888 that is set as default.
 
 # Setup
 
@@ -54,8 +60,10 @@ service provides some additional configuration options:
 - **trace.files.path** - Customize tracing log path to store tracing info ( default: trace )
 - **files.path** - Customize files storage base path 
 - **files.max-days-age** - Customize max age for files (last modified time is used)
+- **spring.profiles.active** - Enable/disable tracing by adding `trace-enable` as active profile
 
 # Tech used
 
 - [Spring Boot 2.0](https://projects.spring.io/spring-boot/)
 - [Kotlin](https://kotlinlang.org/)
+- [Swagger](https://swagger.io/)
