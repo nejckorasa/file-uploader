@@ -54,3 +54,8 @@ service provides some additional configuration options:
 - **trace.files.path** - Customize tracing log path to store tracing info ( default: trace )
 - **files.path** - Customize files storage base path 
 - **files.max-days-age** - Customize max age for files (last modified time is used)
+
+# Tech used
+
+- [Spring Boot 2.0](https://projects.spring.io/spring-boot/)
+- [Kotlin](https://kotlinlang.org/)
