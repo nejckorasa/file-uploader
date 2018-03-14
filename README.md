@@ -43,9 +43,17 @@ API documents via swagger UI can be accessed via **/swagger-ui.html**
 
 For instance: [http://localhost:8888/swagger-ui.html](http://localhost:8888/swagger-ui.html) if you run the service locally on port 8888 that is set as default.
 
+## Security
+
+OAuth2 security is supported using JWT (Json Web Tokens). It can be enabled/disabled via spring profiles:
+
+- **no-auth** - No security is enabled
+- **oauth2-auth** - OAuth2 Security using JWT (See property `security.oauth2.resource.jwk.key-set-uri`)
+
+
 # Setup
 
-- Download (really?)
+- Download ( really? )
 - Configure maven or use the bundled version inside a project
 - Modify `application.properties` file
 - Build project via Maven (`mvn install`)
@@ -67,3 +75,5 @@ service provides some additional configuration options:
 - [Spring Boot 2.0](https://projects.spring.io/spring-boot/)
 - [Kotlin](https://kotlinlang.org/)
 - [Swagger](https://swagger.io/)
+- [JWT - Json Web Tokens](https://jwt.io)
+
