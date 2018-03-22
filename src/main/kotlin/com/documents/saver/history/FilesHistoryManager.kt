@@ -23,7 +23,7 @@ class FilesHistoryManager(
     private val logger = LoggerFactory.getLogger(FileSaver::class.java)
 
 
-    @Scheduled(cron = "0 0 1 * * ?") // every day at 1 AM TODO -> make it configurable via properties
+    @Scheduled(cron = "\${files.deletion-cron-expression:0 0 2 1/1 * ?}")
     fun run() {
 
         val cal = Calendar.getInstance().apply { add(Calendar.DATE, - 1 * maxDaysAge) }

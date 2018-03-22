@@ -13,6 +13,17 @@ Service can act as a (backup) storage for any kind of data. Files are saved to l
 
 Data is managed by age - files older than **n** days are periodically deleted. (See property `files.max-days-age`)
 
+## Configurable file deletion schedule
+ 
+Scheduled time to run deletion process can be configured using [cron expressions](http://www.cronmaker.com). 
+(See property `files.deletion-cron-expression`) For example, to run deletion process every day at 2 AM:
+
+``
+files.deletion-cron-expression=0 0 2 1/1 * ?
+``
+
+Above cron expression is also set as default (if no property is defined).
+
 ## Tracing
 
 All upload requests are traced to log files. Data is logged in JSON format. (See property `trace.files.path`).
