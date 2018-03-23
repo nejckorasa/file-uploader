@@ -81,6 +81,39 @@ service provides some additional configuration options:
 - **files.max-days-age** - Customize max age for files (last modified time is used)
 - **spring.profiles.active** - Enable/disable tracing by adding `trace-enable` as active profile
 
+# Calling REST API ( via RestTemplate )
+
+If by any chance you are using `RestTemplate` to call REST API and do not have an actual file but it's rather already loaded as byte array ( `byte[]` ) ...
+
+Following method will make multipart http request.
+
+```java
+public void uploadFile(final byte[] data, final String uri, final String dir) {
+
+    RestTemplate restTemplate = restTemplatesFactory.get();
+
+    ByteArrayResource contentsAsResource = new ByteArrayResource(pdfDto.getData()) {
+
+      @Override
+      public String getFilename() { return data; }
+
+    };
+
+    MultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
+    map.add("name", "your desired filename"));
+    map.add("filename", "your desired filename");
+    map.add("file", contentsAsResource);
+
+    if (dir != null)
+    {
+      map.add("directory", dir);
+    }
+
+    restTemplate.postForObject(uri, map, ResponseEntity.class);
+  }
+```
+
+
 # Tech used
 
 - [Spring Boot 2.0](https://projects.spring.io/spring-boot/)
