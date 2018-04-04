@@ -27,18 +27,12 @@ class FilesHistoryManager(
     fun run() {
 
         val cal = Calendar.getInstance().apply { add(Calendar.DATE, - 1 * maxDaysAge) }
-        logger.debug("Deleting files after ${cal.time}")
-        val deleteBefore: Long = cal.timeInMillis
+        logger.debug("Deleting files before ${cal.time}")
 
+        val deleteBefore: Long = cal.timeInMillis
         val dirPath = Paths.get(filesBasePath)
 
-        Files
-                .walk(dirPath)
-                .map { it.toFile() }
-                .forEach {
-                    if (it.isDirectory) deleteFromDirectory(it, deleteBefore)
-                    else logger.debug("Deleting file ${it.name}") ; it.delete()
-                }
+        deleteFromDirectory(dirPath.toFile(), deleteBefore)
     }
 
 
