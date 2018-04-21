@@ -2,7 +2,7 @@
 
 # What is it
 
-##### Spring boot service (built in Kotlin and on Spring Boot 2.0) used to upload files using HTTP multipart requests
+Service used to upload files using HTTP REST multipart requests. It supports automatic file deletion after customizable file age.
 
 ## Backup storage
 
@@ -95,14 +95,14 @@ public void uploadFile(final byte[] data, final String uri, final String dir) {
     ByteArrayResource contentsAsResource = new ByteArrayResource(pdfDto.getData()) {
 
       @Override
-      public String getFilename() { return data; }
+      public String getFilename() { return "my_file_name"; }
 
     };
 
     MultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
-    map.add("name", "your desired filename"));
-    map.add("filename", "your desired filename");
-    map.add("file", contentsAsResource);
+    map.add("name", "my_file_name"));
+    map.add("filename", "my_file_name");
+    map.add("file", data);
 
     if (dir != null)
     {
