@@ -4,6 +4,8 @@
 
 Service used to upload files using HTTP REST multipart requests. It's main purpose is to act as a simple solution to backup storage. It supports automatic file deletion after customizable file age. Made to work with JWT security using [JWK](https://tools.ietf.org/html/rfc7517).
 
+![](http://icons.iconarchive.com/icons/paomedia/small-n-flat/128/floppy-icon.png)
+
 ## Backup storage
 
 Service can act as a (backup) storage for any kind of data. Files are saved to local disk storage - base path is configurable.
