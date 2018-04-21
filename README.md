@@ -2,7 +2,7 @@
 
 # What is it
 
-Service used to upload files using HTTP REST multipart requests. It supports automatic file deletion after customizable file age.
+Service used to upload files using HTTP REST multipart requests. It's main purpose is to act as a simple solution to backup storage. It supports automatic file deletion after customizable file age. Made to work with JWT security using [JWK](https://tools.ietf.org/html/rfc7517).
 
 ## Backup storage
 
