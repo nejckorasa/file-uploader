@@ -19,5 +19,5 @@ class UploadTracer(
 
     fun trace(file: String, directory: String?) = environment.acceptsProfiles("trace-enable")
             .takeIf { it }
-            ?.let { logger.info(objectMapper.writeValueAsString(TraceInfo(file, directory))) }
+            .let { logger.info(objectMapper.writeValueAsString(TraceInfo(file, directory))) }
 }
